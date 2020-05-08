@@ -20,33 +20,20 @@ public class ModuleController {
     @Autowired
     private ModuleService serviceModule;
 
-    @RequestMapping("/student/{id}/modules")
-    public List<Module> getModules(@PathVariable String id){
-        return serviceModule.getAllModules(id);
+    @RequestMapping("/student/{mid}/modules")
+    public List<Module> getModules(@PathVariable String mid){
+        return serviceModule.getAllModules(mid);
     }
 
     @RequestMapping("/student/{studentId}/modules/{id}")
-    public Module getModule(@PathVariable String id){
-        return serviceModule.getModule(id);
-    }
-/*
-
-    @RequestMapping(method = RequestMethod.POST, value="/student/{studentId}/modules")
-       public void addModule(@RequestBody Module module, @PathVariable String studentId){  // we can get the subject id through path param
-        module.setSub(new Student(studentId, "",""));
-       serviceModule.addModule(module);
+    public Module getModule(@PathVariable String mid){
+        return serviceModule.getModule(mid);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/student/{studentId}/modules/{id}")
-    public void updateModule(@RequestBody Module module, @PathVariable String studentId, @PathVariable String id){
-       module.setSub(new Student(studentId, "",""));
-        serviceModule.updateModule(module);
-    }
-*/
 
     @RequestMapping(method = RequestMethod.DELETE, value="/student/{studentId}/modules/{id}")
-    public void deleteModule(@PathVariable String id){
-        serviceModule.deleteModule(id);
+    public void deleteModule(@PathVariable String mid){
+        serviceModule.deleteModule(mid);
     }
 
 

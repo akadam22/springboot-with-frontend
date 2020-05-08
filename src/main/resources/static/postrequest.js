@@ -26,20 +26,10 @@ $(document).ready(
 					data : JSON.stringify(formData),
 					dataType : 'json',
 					success : function(result) {
-						//if (result.status == "success") {
-						alert("success response")
 						console.log(result);
 							$("#postResultDiv").html(
-									"" + result.studentFirstName
-											+ " Registered Successfully! Congratualations !!!!<br>");
-						//} else {
-					     /*   console.log("Investigating error");
-					        alert(result.status);
-					        console.log("Anushka"+ result);
-
-							$("#postResultDiv").html("<strong>Error123</strong>");
-
-						}*/
+									"<b>Student Name : " + result.studentFirstName + " " + result.studentLastName + " with <b>Student ID : " +  result.id
+											+ "<b> Registered Successfully!<br><p>");
 
 					},
 					error : function(e) {

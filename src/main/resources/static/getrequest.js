@@ -1,52 +1,3 @@
-/*
-GET: $(document).ready(
-		function() {
-
-			// GET REQUEST
-			$("#getStudents").click(function(event) {
-				event.preventDefault();
-				ajaxGet();
-			});
-
-			// DO GET
-			function ajaxGet() {
-				$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					url : "getStudent",
-					success : function(result) {
-						//if (result.status == "success") {
-
-							$('#getResultDiv ul').empty();
-							var stuList = "";
-							$.each(result.data,
-									function(i, student) {
-										var user = "Student ID  "
-												+ student.id
-												+ ", Student First Name  = " + student.studentFirstName
-												+ ", Student Last Name  = " + student.studentLastName +"<br>";
-										$('#getResultDiv .list-group').append(student)
-									});
-							console.log("Success: ", result);
-						//} else {
-							*/
-/*$("#getResultDiv").html("<strong>Error</strong>");
-							alert(result.status);
-							console.log("Fail: ", result);
-						}*//*
-
-					},
-					error : function(e) {
-						$("#getResultDiv").html("<strong>Error</strong>");
-						//alert("Error !!")
-						//alert(result.status);
-						console.log("ERROR: ", e);
-					}
-				});
-			}
-		})*/
-
-
 $(document).ready(
 		function() {
 
@@ -62,25 +13,56 @@ $("#getStudents").click(function(event) {
 					url : "getStudent",
 					contentType : "application/json",
 					success : function(result) {
-						if (result.status == "Done") {
 
 							$('#getResultDiv.list-group li').remove();
-							var stuList = "";
-							$.each(result.data,
-									function(i, student) {
-										var user = "Student " + i + ": FirstName : " + student.studentFirstName + " , LastName : " + student.studentLastName + "<br>";
-										$('#getResultDiv .list-group').append(student)
-									});
-							console.log("Success: ", result);
-						} else {
-                           $("#getResultDiv").html("<strong>Error</strong>");
-							console.log("Fail: ", result);
-						}
+
+                var data = result.studentList;
+                var userData = "<table border='1'>";
+                    userData += "<tr>";
+
+                      	userData += "<th>";
+                        	userData += 'id';
+                        userData += "</th>";
+
+                        userData += "<th>";
+                        	userData += 'first name';
+                        userData += "</th>";
+
+                        userData += "<th>";
+                        	userData += 'Last name';
+                        userData += "</th>";
+
+                      userData += "</tr>";
+                    for(i=0;i<data.length;i++)
+                    {
+                      userData += "<tr>";
+
+                      	userData += "<td>";
+                        	userData += data[i].id;
+                        userData += "</td>";
+
+                        userData += "<td>";
+                        	userData += data[i].studentFirstName;
+                        userData += "</td>";
+
+                        userData += "<td>";
+                        	userData += data[i].studentLastName;
+                        userData += "</td>";
+
+                      userData += "</tr>";
+                    }
+                    userData += "</table>";
+
+                    $("#getResultDiv").html(userData);
+
 			        },
 					error : function(e) {
-						$("#getResultDiv").html("<strong>Error</strong>");
-			          	alert(e);
-					    console.log("ERROR: ", e);
+					//	$("#getResultDiv").hide();
+						//alert(e);
+                      //  console.log("Anushka"+ result);
+                       alert("Error!");
+                        console.log(e);
+					 console.log("ERROR: ", e);
 					}
 				});
 			}

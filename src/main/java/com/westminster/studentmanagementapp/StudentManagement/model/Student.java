@@ -7,6 +7,7 @@ import lombok.ToString;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
@@ -18,6 +19,7 @@ public class Student {
 
     //declaring instance variables
     @Id //this notifies the JPA the primary key for the database table
+
     private String id;
     private String studentFirstName;
     private String studentLastName;

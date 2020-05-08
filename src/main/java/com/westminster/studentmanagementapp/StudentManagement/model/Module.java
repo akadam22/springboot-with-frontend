@@ -24,7 +24,7 @@ public class Module {
     //@GeneratedValue
     @Id //this notifies the JPA the primary key for the database table
     private String mid;
-    private String subName;
+    private String moduleName;
     private String info;
 
     @ManyToOne
