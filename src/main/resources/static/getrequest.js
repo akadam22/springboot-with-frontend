@@ -5,7 +5,14 @@ $("#getStudents").click(function(event) {
 				event.preventDefault();
 				ajaxGet();
 			});
-
+$(document).ready(function(){
+                  $('#getStudents').click(function(){
+                        if(($('#getResultDiv').val()) == '')
+                         {
+                            alert("List is Empty!")
+                          }
+                         });
+                   });
 // DO GET
 			function ajaxGet() {
 				$.ajax({
@@ -21,16 +28,18 @@ $("#getStudents").click(function(event) {
                     userData += "<tr>";
 
                       	userData += "<th>";
-                        	userData += 'id';
+                        	userData += 'Id';
                         userData += "</th>";
 
                         userData += "<th>";
-                        	userData += 'first name';
+                        	userData += 'Full name';
                         userData += "</th>";
 
                         userData += "<th>";
-                        	userData += 'Last name';
+                        	userData += 'Email';
                         userData += "</th>";
+
+
 
                       userData += "</tr>";
                     for(i=0;i<data.length;i++)
@@ -42,12 +51,14 @@ $("#getStudents").click(function(event) {
                         userData += "</td>";
 
                         userData += "<td>";
-                        	userData += data[i].studentFirstName;
+                        	userData += data[i].studentFullName;
                         userData += "</td>";
 
                         userData += "<td>";
-                        	userData += data[i].studentLastName;
+                        	userData += data[i].email;
                         userData += "</td>";
+
+
 
                       userData += "</tr>";
                     }
@@ -57,9 +68,7 @@ $("#getStudents").click(function(event) {
 
 			        },
 					error : function(e) {
-					//	$("#getResultDiv").hide();
-						//alert(e);
-                      //  console.log("Anushka"+ result);
+
                        alert("Error!");
                         console.log(e);
 					 console.log("ERROR: ", e);
@@ -67,3 +76,7 @@ $("#getStudents").click(function(event) {
 				});
 			}
 		})
+
+
+
+

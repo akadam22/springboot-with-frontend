@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Student Management System</title>
     <meta charset="UTF-8">
@@ -10,6 +10,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="/postrequest.js"></script>
     <script src="/getrequest.js"></script>
+    <script src="/deleterequest.js"></script>
+
+
+
 </head>
 <body>
 <div id="postResultDiv" align="center"></div>
@@ -17,30 +21,30 @@
     <h2>Student Registration Form</h2>
     <form id="studentForm">
         <div class="form-group">
-            <label for="id">Student ID:</label>
+            <label for="id">Student ID:*</label>
             <input type="text" class="form-control" id="id" placeholder="Enter your student id here" name="id">
+
         </div>
         <div class="form-group">
-            <label for="studentFirstName">First Name:</label>
-            <input type="text" class="form-control" id="studentFirstName" placeholder="Enter password" name="studentFirstName">
+            <label for="studentFullName">Full Name:*</label>
+            <input type="text" class="form-control" id="studentFullName" placeholder="Enter student full name" name="studentFullName">
+
         </div>
         <div class="form-group">
-            <label for="studentLastName">Last Name:</label>
-            <input type="text" class="form-control" id="studentLastName" placeholder="Enter password" name="studentLastName">
-        </div>
-        <div class="form-group form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember"> Remember me
-            </label>
+            <label for="email">Email:*</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
     </form>
 
     </br>
 
     <div class="col-sm-7" style="margin : 20px 0px 20px 0px">
         <button id="getStudents" type="button" class="btn btn-primary">Get All Students</button>
+        <button id="deleteStudent" type="button" class="btn btn-primary">Delete Student</button>
         <div id="getResultDiv" style="padding : 20px 10px 20px 50px">
             <ul class="list-group"></ul>
         </div>

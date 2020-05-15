@@ -9,14 +9,47 @@ $(document).ready(
 				ajaxPost();
 			});
 
+			$(document).ready(function(){
+                   $('#submit').click(function(){
+                        if($.trim($('#studentFullName').val()) == '')
+                       {
+                           $('#studentFullName').css("border-color", "red");
+                           alert("Full name is empty !");
+                       }
+                 });
+            });
+
+            $(document).ready(function(){
+                               $('#submit').click(function(){
+                                    if($.trim($('#id').val()) == '')
+                                   {
+                                       $('#id').css("border-color", "red");
+                                       alert("ID is empty!");
+                                   }
+                             });
+                        });
+
+                        $(document).ready(function(){
+                                           $('#submit').click(function(){
+                                                if($.trim($('#email').val()) == '')
+                                               {
+                                                   $('#email').css("border-color", "red");
+                                                   alert("Email is empty!");
+                                               }
+                                         });
+                                    });
+
 			function ajaxPost() {
 
 				// FORM DATA
 				var formData = {
 					id : $("#id").val(),
-					studentFirstName : $("#studentFirstName").val(),
-					studentLastName : $("#studentLastName").val()
+					studentFullName : $("#studentFullName").val(),
+					email : $("#email").val()
+
 				}
+
+
 
 				// DO POST
 				$.ajax({
@@ -28,8 +61,9 @@ $(document).ready(
 					success : function(result) {
 						console.log(result);
 							$("#postResultDiv").html(
-									"<b>Student Name : " + result.studentFirstName + " " + result.studentLastName + " with <b>Student ID : " +  result.id
+									"<b>Student Name : " + result.studentFullName + " with <b>Student ID : " +  result.id
 											+ "<b> Registered Successfully!<br><p>");
+                                        reset();
 
 					},
 					error : function(e) {
@@ -42,3 +76,10 @@ $(document).ready(
 
 			}
 		})
+
+
+		function reset(){
+		    $('#id').val('');
+		    $('#studentFullName').val('');
+		    $('#email').val('');
+		}
