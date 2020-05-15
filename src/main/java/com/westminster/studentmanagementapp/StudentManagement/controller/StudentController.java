@@ -21,7 +21,7 @@ public class StudentController {
     /*
     The following is get and post method on html page
      */
-   /* @GetMapping("/getStudent")
+    @GetMapping("/getStudent")
     public ResponseEntity<StudentDTO> getStudent(){
             StudentDTO dto= new StudentDTO();
                 dto.setStudentList(service.getStudents());
@@ -32,7 +32,7 @@ public class StudentController {
     public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student){
         service.addStudent(student);
         return new ResponseEntity<Student>(student, HttpStatus.OK);
-    }*/
+    }
 
 /*
     The following code is for crud operations using postman
@@ -49,7 +49,7 @@ public class StudentController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/student")
-    public void addStudent(@RequestBody Student student){
+    public void addStudents(@RequestBody Student student){
         service.addStudent(student);
     }
 

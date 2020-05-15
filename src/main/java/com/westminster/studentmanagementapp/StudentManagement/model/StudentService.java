@@ -29,6 +29,10 @@ public class StudentService<T>{
         dataService.save(student);
     }
 
+    public void addStudents(Student student) {
+        dataService.save(student);
+    }
+
     public void updateStudent(String id, Student student) {
         dataService.save(student);   //it checks if there is id already there if yes it updates if no its adds
     }
