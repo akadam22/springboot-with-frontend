@@ -2,6 +2,7 @@ $(document).ready(
 		function() {
 
 $("#getStudents").click(function(event) {
+            // Prevent the form from submitting via the browser.
 				event.preventDefault();
 				ajaxGet();
 			});

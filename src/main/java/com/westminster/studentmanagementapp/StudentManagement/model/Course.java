@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,29 +14,25 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity     //mapped to database table
-@Table(catalog = "user")
-
+@Table(name = "Course1")
 public class Course {
     @Id
-    @Column(name="Courseid_PK",length=50)
+
+    @Column(name="Courseid_PK")
     private String courseid;
     @Column(name="Course_Name",nullable = false,length=50)
     private String courseName;
-    @Column(name="Course_Fee",nullable = false,length=50)
+    @Column(name="Course_Fee",length=10)
     private int coursefee;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "Courseid_PK")
     private List<Module> moduleList = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Student student;
+   /* @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Studentid_PK")
+    private List<Student> student;*/
 
 }
 
-/*
-{
-        "courseid" : "001CS",
-        "courseName" : "Computer Science",
-        "coursefee" : 12000
-        }*/
+
