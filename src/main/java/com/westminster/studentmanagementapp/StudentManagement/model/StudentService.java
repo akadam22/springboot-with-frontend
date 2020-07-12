@@ -1,16 +1,16 @@
 package com.westminster.studentmanagementapp.StudentManagement.model;
 
+import com.westminster.studentmanagementapp.StudentManagement.exception.StudentNotFoundException;
+import com.westminster.studentmanagementapp.StudentManagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class StudentService<T>{
+@Service// annotates that this class performs service tasks.
+public class StudentService{
     @Autowired   // this will inject the instance of dataservice
-    private DataService dataService;
+    private StudentRepository dataService;
 
 
     public List<Student> getStudents(){
@@ -22,7 +22,7 @@ public class StudentService<T>{
 
     public Student getStudent(String id){
         return dataService.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(id));
+                .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public void addStudent(Student student) {
@@ -41,5 +41,6 @@ public class StudentService<T>{
     public void deleteStudent(String id) {
         dataService.deleteById(id);
     }
+
 
 }

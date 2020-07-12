@@ -1,5 +1,6 @@
 package com.westminster.studentmanagementapp.StudentManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,11 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity     //mapped to database table
-@Table(name = "Course1")
+@Table(name = "Course")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Course {
     @Id
-
-    @Column(name="Courseid_PK")
+    @Column(name="Courseid_PK",nullable = false)
     private String courseid;
     @Column(name="Course_Name",nullable = false,length=50)
     private String courseName;
@@ -29,9 +30,8 @@ public class Course {
     @JoinColumn(name = "Courseid_PK")
     private List<Module> moduleList = new ArrayList<>();
 
-   /* @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Studentid_PK")
-    private List<Student> student;*/
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Student> student;
 
 }
 

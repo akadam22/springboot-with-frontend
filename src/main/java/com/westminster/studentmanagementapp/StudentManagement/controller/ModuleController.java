@@ -18,27 +18,27 @@ public class ModuleController {
     The following code is for crud operations using postman
  */
 
-        @RequestMapping("/module")
+        @RequestMapping("/getAllModules")
         public List<Module> getModules(){
             return service.getModules();
         }
 
-        @RequestMapping("/module/{id}")
+        @RequestMapping("/getModuleById/{id}")
         public Module getModule(@PathVariable String id){
             return service.getModule(id);
         }
 
-        @RequestMapping(method = RequestMethod.POST, value="/module")
+        @RequestMapping(method = RequestMethod.POST, value="/addModule")
         public void addModules(@RequestBody Module module){
             service.addModule(module);
         }
 
-        @RequestMapping(method = RequestMethod.PUT, value="/module/{id}")
+        @RequestMapping(method = RequestMethod.PUT, value="/updateModuleById/{id}")
         public void updateModule(@RequestBody Module module, @PathVariable String id){
             service.updateModule(id, module);
         }
 
-        @RequestMapping(method = RequestMethod.DELETE, value="/module/{id}")
+        @RequestMapping(method = RequestMethod.DELETE, value="/deleteModuleById/{id}")
         public void deleteModule(@PathVariable String id){
             service.deleteModule(id);
         }

@@ -34,27 +34,27 @@ public class StudentController {
     The following code is for crud operations using postman
  */
 
-    @RequestMapping("/student")
-    public List<Student> getSubjects(){
+    @RequestMapping("/getAllStudents")
+    public List<Student> getStudents(){
         return service.getStudents();
     }
 
-    @RequestMapping("/student/{id}")
+    @RequestMapping("/getStudentById/{id}")
     public Student getStudent(@PathVariable String id){
         return service.getStudent(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/student")
+    @RequestMapping(method = RequestMethod.POST, value="/addStudent")
     public void addStudents(@RequestBody Student student){
         service.addStudent(student);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/student/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value="/updateStudentById/{id}")
     public void updateStudent(@RequestBody Student student, @PathVariable String id){
         service.updateStudent(id, student);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/student/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value="/deleteStudentById/{id}")
     public void deleteStudent(@PathVariable String id){
         service.deleteStudent(id);
     }

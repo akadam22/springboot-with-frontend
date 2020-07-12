@@ -1,9 +1,6 @@
 package com.westminster.studentmanagementapp.StudentManagement.controller;
 
-import com.westminster.studentmanagementapp.StudentManagement.model.Course;
-import com.westminster.studentmanagementapp.StudentManagement.model.CourseService;
-import com.westminster.studentmanagementapp.StudentManagement.model.Module;
-import com.westminster.studentmanagementapp.StudentManagement.model.ModuleService;
+import com.westminster.studentmanagementapp.StudentManagement.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,28 +17,27 @@ public class CourseController {
     The following code is for crud operations using postman
  */
 
-    @RequestMapping("/course")
-    public List<Module> getCourses(){
+    @RequestMapping("/getAllCourses")
+    public List<Course> getCourses(){
         return service.getCourses();
     }
 
-
-    @RequestMapping("/course/{id}")
+    @RequestMapping("/getCourseById/{id}")
     public Course getCourse(@PathVariable String id){
         return service.getCourse(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/course")
+    @RequestMapping(method = RequestMethod.POST, value="/addCourse")
     public void addCourses(@RequestBody Course course){
         service.addCourse(course);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/course/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value="/updateCourseById/{id}")
     public void updateCourse(@RequestBody Course course, @PathVariable String id){
         service.updateCourse(id, course);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/course/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value="/deleteCourseById/{id}")
     public void deleteCourse(@PathVariable String id){
         service.deleteCourse(id);
     }

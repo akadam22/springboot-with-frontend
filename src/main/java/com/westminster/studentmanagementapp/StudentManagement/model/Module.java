@@ -1,11 +1,14 @@
 package com.westminster.studentmanagementapp.StudentManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data  //reduce boilerplate code for data objects and create getters and setters
@@ -13,64 +16,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Entity     //mapped to database table
-@Table(name = "Module1")
+@Table(name = "Module")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Module {
     @Id
-    @Column(name="Moduleid_PK",length=50)
+    @Column(name="Moduleid_PK",length=50,nullable = false)
     private String moduleid;
 
     @Column(name="Module_Name",nullable = false,length=50)
     private String moduleName;
 
-    /*@ManyToOne
-    @JoinColumn(referencedColumnName = "Courseid_PK")
-    private Course course;*/
+    @OneToMany
+    private List<Course> course = new ArrayList<>();
+
 
 }
-
-
-/*
-{
-        "name" : "Anushka",
-        "course" :
-        {
-        "courseId" : "001IT",
-        "courseName" : "Information Technology",
-        "fee" : 12000,
-        "moduleList" :
-        [
-        {
-        "moduleId" : "001Programming Principles",
-        "moduleName" : "Programming"
-        },
-        {
-        "moduleId" : "002CS",
-        "moduleName" : "Computer Science"
-        }
-        ]
-        }
-        }*/
-
-/*
-
-{
-        "studentFirstName" : "Anushka",
-        "studentLastName" : "Kadam",
-        "email" : "anuk@gmail.com",
-        "course" :
-        {
-        "courseName" : "Information Technology",
-        "fee" : 12000,
-        "moduleList" :
-        [
-        {
-        "moduleId" : "001Programming Principles",
-        "moduleName" : "Programming"
-        },
-        {
-        "moduleId" : "002CS",
-        "moduleName" : "Computer Science"
-        }
-        ]
-        }
-        }*/

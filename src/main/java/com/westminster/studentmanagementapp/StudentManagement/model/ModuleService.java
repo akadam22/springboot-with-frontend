@@ -1,14 +1,13 @@
 package com.westminster.studentmanagementapp.StudentManagement.model;
+import com.westminster.studentmanagementapp.StudentManagement.exception.ModuleNotFoundException;
 import com.westminster.studentmanagementapp.StudentManagement.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ModuleService<T>{
+public class ModuleService{
     @Autowired   // this will inject the instance of courseRepository
     private ModuleRepository moduleRepository;
 
@@ -22,7 +21,7 @@ public class ModuleService<T>{
 
     public Module getModule(String id){
         return moduleRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(id));
+                .orElseThrow(() -> new ModuleNotFoundException(id));
     }
 
     public void addModule(Module module) {

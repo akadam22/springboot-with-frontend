@@ -1,8 +1,9 @@
 package com.westminster.studentmanagementapp.StudentManagement.repository;
 
-import com.westminster.studentmanagementapp.StudentManagement.model.Module;
+import com.westminster.studentmanagementapp.StudentManagement.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-public interface ModuleRepository extends JpaRepository<Module,String> {
+@Service
+public interface StudentRepository extends JpaRepository<Student,String> {
 }
